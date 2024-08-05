@@ -22,3 +22,12 @@ console.log('Command Line Arguments:', process.argv);    // Command line argumen
 if (process.argv[2] == 'kelly') {
     console.log('Yes, this is the second argument (argv) oooo');
 }
+
+// Handling Uncaught Exceptions
+/**
+ * You can listen for uncaught exceptions to handle errors gracefully.
+ */
+process.on('uncaughtException', (error) => {
+    console.log('Oh no, an uncaught error occurred:');
+    console.error(error);
+});
