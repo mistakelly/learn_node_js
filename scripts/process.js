@@ -31,3 +31,9 @@ process.on('uncaughtException', (error) => {
     console.log('Oh no, an uncaught error occurred:');
     console.error(error);
 });
+
+
+// Simulate an uncaught error by throwing it
+setTimeout(() => {
+    throw new Error('This is an uncaught exception!');
+}, 1000);
