@@ -14,3 +14,11 @@ console.log('Process ID (pid):', process.pid);           // The process ID
 console.log('Platform:', process.platform);              // The platform Node.js is running on
 console.log('Node.js Version:', process.version);        // The current Node.js version
 console.log('Command Line Arguments:', process.argv);    // Command line arguments
+
+
+
+// Example of using command line arguments (argv)
+// If the second argument is 'kelly', print a message
+if (process.argv[2] == 'kelly') {
+    console.log('Yes, this is the second argument (argv) oooo');
+}
