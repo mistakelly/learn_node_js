@@ -61,3 +61,18 @@ process.stdin.on('data', (data) => {
 
     process.exit(0);  // Exit after receiving input
 });
+
+// Simulate User Input (For Testing)
+/**
+ * Here we simulate user input by writing data directly to stdin.
+ */
+process.stdout.write('What is your name? ');
+
+// Simulate the input 'Kelvin'
+process.stdin.write('Kelvin\n');  // Simulating typing 'Kelvin' and pressing Enter
+
+process.stdin.on('data', (data) => {
+    console.log('Simulated Input (Buffer):', data);
+    console.log('Converted to String:', data.toString()); // Convert Buffer to string and print
+    process.exit(0);  // Exit after simulated input
+});
