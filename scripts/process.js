@@ -37,3 +37,27 @@ process.on('uncaughtException', (error) => {
 setTimeout(() => {
     throw new Error('This is an uncaught exception!');
 }, 1000);
+
+
+
+// Getting Input from the User via stdin
+/**
+ * This section demonstrates reading input from the user through stdin.
+ * process.stdin.resume() and process.stdin.setEncoding('utf8') are used to read input in real-time.
+ * The data event is triggered when user input is received.
+ */
+process.stdout.write('What is your name? ');  // Prompt for input
+
+process.stdin.on('data', (data) => {
+    // Check the type of the 'data' received from stdin
+    console.log('Data type:', typeof data);          // Shows 'Buffer'
+    console.log('Is Buffer:', Buffer.isBuffer(data)); // Checks if data is a Buffer
+
+    // Print the raw data received (Buffer)
+    console.log('Raw Data:', data);
+
+    // Convert the Buffer to a string and print it
+    process.stdout.write(`Data: ${data.toString()}`); // Convert Buffer to string and output it
+
+    process.exit(0);  // Exit after receiving input
+});
