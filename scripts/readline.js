@@ -102,3 +102,28 @@ rl.on('SIGINT', () => {
     console.log('User pressed Ctrl+C');
     rl.close();  // Close the interface when Ctrl+C is pressed
 });
+
+
+// 5. rl.close()
+// Closes the readline interface. It should be called when you're done processing user input.
+// Example:
+// rl.close(); // Close the readline interface
+
+// 6. rl.pause()
+// Pauses the input stream. This method can be useful when you want to stop reading input temporarily, like during asynchronous operations.
+// Example:
+// rl.pause(); // Pauses the input stream, no further input will be read
+
+// 7. rl.resume()
+// Resumes the input stream after it was paused with rl.pause().
+// Example:
+// rl.resume(); // Resumes reading input after being paused
+
+// 8. rl.on('SIGINT', callback)
+// Listens for the 'SIGINT' signal, which is sent when the user presses Ctrl+C.
+// It is useful for handling interruption signals and closing the program gracefully.
+// Example:
+// rl.on('SIGINT', () => {
+//     console.log('Received SIGINT, shutting down...');
+//     rl.close();
+// });
