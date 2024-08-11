@@ -114,3 +114,9 @@ rl.on('SIGINT', () => {
 // Pauses the input stream. This method can be useful when you want to stop reading input temporarily, like during asynchronous operations.
 // Example:
 // rl.pause(); // Pauses the input stream, no further input will be read
+
+
+// 7. rl.resume()
+// Resumes the input stream after it was paused with rl.pause().
+// Example:
+// rl.resume(); // Resumes reading input after being paused
