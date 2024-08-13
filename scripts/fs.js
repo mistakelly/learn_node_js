@@ -31,3 +31,18 @@ try {
 } catch (err) {
     console.error(err);
 }
+
+// 5. fs.appendFile() - Asynchronously appends data to a file
+fs.appendFile('output.txt', ' Hello again!', 'utf8', (err) => {
+    if (err) throw err;
+    console.log('Data appended to file!');
+});
+
+// 6. fs.appendFileSync() - Synchronously appends data to a file
+try {
+    fs.appendFileSync('output.txt', ' Hello again!', 'utf8');
+    console.log('Data appended to file!');
+} catch (err) {
+    console.error(err);
+}
+
