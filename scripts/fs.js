@@ -21,3 +21,13 @@ fs.writeFile('output.txt', 'Hello, world!', 'utf8', (err) => {
     if (err) throw err;
     console.log('File has been saved!');
 });
+
+
+
+// 4. fs.writeFileSync() - Synchronously writes data to a file
+try {
+    fs.writeFileSync('output.txt', 'Hello, world!', 'utf8');
+    console.log('File has been saved!');
+} catch (err) {
+    console.error(err);
+}
