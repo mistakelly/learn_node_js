@@ -64,3 +64,18 @@ fs.access('file.txt', fs.constants.F_OK, (err) => {
         console.log('File exists');
     }
 });
+
+
+// 9. fs.readdir() - Asynchronously reads the contents of a directory
+fs.readdir('.', (err, files) => {
+    if (err) throw err;
+    console.log('Files in directory:', files);
+});
+
+// 10. fs.readdirSync() - Synchronously reads the contents of a directory
+try {
+    const files = fs.readdirSync('.');
+    console.log('Files in directory:', files);
+} catch (err) {
+    console.error(err);
+}
