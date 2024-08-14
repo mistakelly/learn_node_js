@@ -54,3 +54,13 @@ if (fs.existsSync('file.txt')) {
 } else {
     console.log('File does not exist!');
 }
+
+
+// 8. fs.access() - Tests the user's permissions for a file asynchronously
+fs.access('file.txt', fs.constants.F_OK, (err) => {
+    if (err) {
+        console.log('File does not exist');
+    } else {
+        console.log('File exists');
+    }
+});
