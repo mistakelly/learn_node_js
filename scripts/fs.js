@@ -46,3 +46,11 @@ try {
     console.error(err);
 }
 
+
+
+// 7. fs.existsSync() - Checks if a file or directory exists synchronously
+if (fs.existsSync('file.txt')) {
+    console.log('File exists!');
+} else {
+    console.log('File does not exist!');
+}
