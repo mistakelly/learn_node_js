@@ -94,3 +94,18 @@ try {
 } catch (err) {
     console.error(err);
 }
+
+
+// 13. fs.unlink() - Asynchronously deletes a file
+fs.unlink('file.txt', (err) => {
+    if (err) throw err;
+    console.log('File deleted!');
+});
+
+// 14. fs.unlinkSync() - Synchronously deletes a file
+try {
+    fs.unlinkSync('file.txt');
+    console.log('File deleted!');
+} catch (err) {
+    console.error(err);
+}
