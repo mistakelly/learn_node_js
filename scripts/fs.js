@@ -109,3 +109,18 @@ try {
 } catch (err) {
     console.error(err);
 }
+
+
+// 15. fs.rmdir() - Asynchronously removes a directory
+fs.rmdir('emptyDirectory', (err) => {
+    if (err) throw err;
+    console.log('Directory removed!');
+});
+
+// 16. fs.rmdirSync() - Synchronously removes a directory
+try {
+    fs.rmdirSync('emptyDirectory');
+    console.log('Directory removed!');
+} catch (err) {
+    console.error(err);
+}
