@@ -79,3 +79,18 @@ try {
 } catch (err) {
     console.error(err);
 }
+
+
+// 11. fs.mkdir() - Asynchronously creates a directory
+fs.mkdir('newDirectory', { recursive: true }, (err) => {
+    if (err) throw err;
+    console.log('Directory created!');
+});
+
+// 12. fs.mkdirSync() - Synchronously creates a directory
+try {
+    fs.mkdirSync('newDirectory', { recursive: true });
+    console.log('Directory created!');
+} catch (err) {
+    console.error(err);
+}
