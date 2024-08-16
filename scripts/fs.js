@@ -124,3 +124,18 @@ try {
 } catch (err) {
     console.error(err);
 }
+
+
+// 17. fs.rename() - Asynchronously renames or moves a file/directory
+fs.rename('oldName.txt', 'newName.txt', (err) => {
+    if (err) throw err;
+    console.log('File renamed!');
+});
+
+// 18. fs.renameSync() - Synchronously renames or moves a file/directory
+try {
+    fs.renameSync('oldName.txt', 'newName.txt');
+    console.log('File renamed!');
+} catch (err) {
+    console.error(err);
+}
