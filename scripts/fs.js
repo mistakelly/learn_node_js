@@ -139,3 +139,19 @@ try {
 } catch (err) {
     console.error(err);
 }
+
+
+// Additional Methods
+
+// 19. fs.createReadStream() - Creates a readable stream for a file
+const readStream = fs.createReadStream('file.txt', 'utf8');
+readStream.on('data', (chunk) => {
+    console.log('Data chunk:', chunk);
+});
+
+// 20. fs.createWriteStream() - Creates a writable stream for a file
+const writeStream = fs.createWriteStream('output.txt', 'utf8');
+writeStream.write('Hello, world!', (err) => {
+    if (err) throw err;
+    console.log('Data written to file!');
+});
