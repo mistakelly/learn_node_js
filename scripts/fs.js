@@ -171,3 +171,19 @@ try {
 } catch (err) {
     console.error(err);
 }
+
+// 23. fs.fstat() - Asynchronously gets information about a file descriptor
+const fd = fs.openSync('file.txt', 'r');
+fs.fstat(fd, (err, stats) => {
+    if (err) throw err;
+    console.log('File stats:', stats);
+});
+
+// 24. fs.fstatSync() - Synchronously gets information about a file descriptor
+try {
+    const fd = fs.openSync('file.txt', 'r');
+    const stats = fs.fstatSync(fd);
+    console.log('File stats:', stats);
+} catch (err) {
+    console.error(err);
+}
