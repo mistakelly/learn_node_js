@@ -155,3 +155,19 @@ writeStream.write('Hello, world!', (err) => {
     if (err) throw err;
     console.log('Data written to file!');
 });
+
+
+
+// 21. fs.copyFile() - Asynchronously copies a file
+fs.copyFile('source.txt', 'destination.txt', (err) => {
+    if (err) throw err;
+    console.log('File copied!');
+});
+
+// 22. fs.copyFileSync() - Synchronously copies a file
+try {
+    fs.copyFileSync('source.txt', 'destination.txt');
+    console.log('File copied!');
+} catch (err) {
+    console.error(err);
+}
