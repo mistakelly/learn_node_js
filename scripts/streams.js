@@ -28,3 +28,17 @@ const rl = readline.createInterface({
 rl.on('line', (line) => {
     console.log('Line received:', line);
 });
+
+
+// Process the data in chunks
+readStream.on('data', (chunk) => {
+    console.log('Processing chunk:', chunk);
+});
+
+readStream.on('end', () => {
+    console.log('Finished processing the file.');
+});
+
+readStream.on('error', (err) => {
+    console.error('Error:', err);
+});
