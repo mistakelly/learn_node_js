@@ -15,3 +15,16 @@ readStream.on('end', () => {
 readStream.on('error', (err) => {
     console.error('Error reading the file:', err);
 });
+
+
+
+// Create a readline interface (using readline with streams)
+const rl = readline.createInterface({
+    input: readStream,
+    output: process.stdout // Remove this to prevent automatic output
+});
+
+// Listen for the 'line' event
+rl.on('line', (line) => {
+    console.log('Line received:', line);
+});
