@@ -2,8 +2,15 @@ const http = require('http')
 
 
 const server = http.createServer((req, res) => {
-    console.log(`req ${req}`)
-    console.log(`res ${res}`)
+
+    if (res.statusCode == 200){
+        console.log('valid response')
+    }else{
+        console.log('error')
+    }
+
+    res.setHeader('content-Type', 'Applicatieewfwaon/json')
+    res.end('hello world from http module')
 })
 
 
