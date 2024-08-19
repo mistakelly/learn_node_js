@@ -23,6 +23,7 @@ const http = require('http')
 
 
 const fs = require('fs')
+const { json } = require('stream/consumers')
 
 const readStream = fs.createReadStream('index.html', 'utf-8')
 
@@ -39,6 +40,13 @@ readStream.on('data', chunk => {
             res.setHeader('Content-Type', 'text/plain')
 
             res.end(data)
+        }
+
+        if (req.method == 'POST') {
+            dataObj = { 'message': 'Post request' }
+            res.setHeader('Content-Type', 'application/json')
+            res.end(JSON.stringify(dataObj))
+
         }
     })
 
