@@ -29,6 +29,7 @@ const readStream = fs.createReadStream('index.html', 'utf-8')
 
 let data = ''
 
+
 readStream.on('data', chunk => {
     data += chunk
 }).on('end', () => {
@@ -43,10 +44,18 @@ readStream.on('data', chunk => {
         }
 
         if (req.method == 'POST') {
-            dataObj = { 'message': 'Post request' }
-            res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify(dataObj))
+            let body = ''
 
+            req.on('data', (chunk) => {
+                body += chunk
+            }).on('end', () => {
+                res.setHeader('Content-Type', 'application/json')
+                res.statusCode = 200
+                console.log('body', body)
+                parsedObj = JSON.parse(body)
+
+                res.end(JSON.stringify(parsedObj))
+            })
         }
     })
 
