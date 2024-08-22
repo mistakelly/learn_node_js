@@ -59,39 +59,37 @@
 //     });
 // });
 
+// MAKING REQUEST AS THE CLIENT
+const http = require('http');
 
-// making request as the client.
-const http = require('http')
-const path = require('path')
+// Importing path module (though it's not used here, it can be used for working with file and directory paths)
+const path = require('path');
 
+// Defining the options for the HTTP request
 const options = {
-    hostname: 'jsonplaceholder.typicode.com',
-    method: 'GET',
-    path: '/todos/1',
-    port: 80,
+    hostname: 'jsonplaceholder.typicode.com', // The server's hostname
+    method: 'GET', // HTTP method for the request (GET request to fetch data)
+    path: '/todos/', // The path of the resource we want to access
+    port: 80, // The port used for HTTP requests (default is 80)
 }
 
-
+// Making the request as a client using http.request
 const req = http.request(options, (res) => {
-    let data = ''
-    res.on('data', (chunk) => {
-        data += chunk
-    }).on('end', () => {
-        console.log('response', data)
-    })
-})
+    let data = ''; // Variable to accumulate the response data
 
-// Handle request errors
-req.on('error', (e) => {
-    console.error('Request failed:', e);
+    // Listening for chunks of data
+    res.on('data', (chunk) => {
+        data += chunk; // Append each chunk to the data variable
+    }).on('end', () => {
+        // Once the response ends, log the complete response data
+        console.log('response', data);
+    });
 });
 
+// Handling request errors, if any occur during the HTTP request
+req.on('error', (e) => {
+    console.error('Request failed:', e); // Log the error message
+});
 
-// req.end()
-
-
-
-// server.listen(3000, () => {
-//     process.stdout.write('Listening on port 3000> ')
-// })
-
+// Send the request (this is necessary to initiate the HTTP request)
+req.end();
