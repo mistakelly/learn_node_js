@@ -1,22 +1,37 @@
 const http = require('http');
 const fs = require('fs');
+// http.globalAgent.maxSockets = 5000; // Increase to a higher limit
 
-const serverSync = http.createServer((req, res) => {
+const serverAsync = http.createServer((req, res) => {
     if (req.url === '/file') {
-        console.log('Start reading file (sync)...');
+        console.log('Start streaming file (async)...');
         const start = Date.now();
-        const fileContent = fs.readFileSync('file.txt', 'utf8'); // Synchronous file read
-        const end = Date.now();
-        console.log(`File read completed in ${end - start} ms`);
 
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(fileContent);  // Sends file content back to client
+        // Create a readable stream and pipe it directly to the response
+        const readStream = fs.createReadStream('index.html');
+
+        readStream.on('open', () => {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            readStream.pipe(res); // Stream file data directly to response
+        });
+
+        readStream.on('error', (err) => {
+            console.error('Error reading file:', err);
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Internal Server Error');
+        });
+
+        readStream.on('end', () => {
+            const end = Date.now();
+            console.log(`File streamed successfully in ${end - start} ms`);
+        });
+
     } else {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Not Found');
     }
 });
 
-serverSync.listen(3001, () => {
-    console.log('Sync Server running on port 3001');
+serverAsync.listen(3002, () => {
+    console.log('Async Server running on port 3002');
 });
