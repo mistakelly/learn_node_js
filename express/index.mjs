@@ -4,6 +4,10 @@ const app = express()
 
 const PORT = process.env.NODE_ENV || 3000
 
+// use json middleware
+
+app.use(express.json())
+
 const users = [
     { id: 1, username: "Alice", password: 1234 },
     { id: 2, username: "Bob", password: 5678 },
@@ -47,6 +51,27 @@ app.get('/:id?', (request, response) => {
 
 
 
+
+
+app.post('/', (request, response) => {
+    console.log('request recieved successfully')
+
+
+    const { body } = request
+
+    // get the body
+    // get the last user in the arrary
+    // add the body to the end of the array
+    // increase the id of the newly added user by last user id + 1
+
+    // used spread operator to unpack request body into newly created user.
+    const newUser = {id: users[users.length - 1].id + 1, ...body}
+
+    // push new user object onto the users array.
+    users.push(newUser)
+
+    return response.status(200).send({'message': 'User created successfully', 'user': newUser})
+})
 
 app.listen(PORT, () => {
     process.stdout.write(`Listening on port ${PORT}> \n`)
